@@ -1,0 +1,17 @@
+global using System;
+global using System.IO;
+global using System.Threading.Tasks;
+global using System.Collections.Generic;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Azure.Functions.Worker;
+global using Microsoft.Azure.Functions.Worker.Http;
+global using Microsoft.Extensions.Logging;
+global using model;
+global using Company.Function;
+global using repository;
+global using service;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Azure.Cosmos;
+global using Microsoft.Azure.Storage.Blob;
+global using Microsoft.Azure.Storage;
+global using Microsoft.Data.SqlClient;

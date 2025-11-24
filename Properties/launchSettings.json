@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "cloud_week_9": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7204",
+      "launchBrowser": false
+    }
+  }
+}
