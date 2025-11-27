@@ -9,19 +9,19 @@ var host = new HostBuilder()
         // The connection string is retrieved from an environment variable
         services.AddSingleton<CosmosClient>(new CosmosClient(Environment.GetEnvironmentVariable("CosmosDBConnectionString")));
         // Register CloudBlobClient as a singleton
-        services.AddSingleton<BlobClient>(new BlobClient(Environment.GetEnvironmentVariable("BlobStorageConnectionString")));
+        services.AddSingleton<BlobServiceClient>(new BlobServiceClient(Environment.GetEnvironmentVariable("BlobStorageConnectionString")));
 
-
-
-
+        // Register SqlConnection as a singleton
+        services.AddSingleton<SqlConnection>(new SqlConnection(Environment.GetEnvironmentVariable("SqlConnectionString")));
 
         // Register IPersonRepository interface with its implementation PersonRepository
         // This allows for dependency injection of IPersonRepository
 
+        services.AddSingleton<IFoodRepo, FoodRepo>();
 
         // Register IPersonService interface with its implementation PersonService
         // This allows for dependency injection of IPersonService
-
+        services.AddSingleton<IFoodService, FoodService>();
 
         // You can add more service registrations here as needed
     })

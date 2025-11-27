@@ -8,16 +8,18 @@ namespace Company.Function;
 public class GetFoods
 {
     private readonly ILogger<GetFoods> _logger;
+    private readonly IFoodService _foodService;
 
-    public GetFoods(ILogger<GetFoods> logger)
+    public GetFoods(ILogger<GetFoods> logger, IFoodService foodService)
     {
         _logger = logger;
+        _foodService = foodService;
     }
 
     [Function("GetFoods")]
-    public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
+    public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "foods")] HttpRequest req)
     {
-        _logger.LogInformation("C# HTTP trigger function processed a request.");
-        return new OkObjectResult("Welcome to Azure Functions!");
+        var foods = _foodService.GetAllFood().Result;
+        return new OkObjectResult(foods);
     }
 }
